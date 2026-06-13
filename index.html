@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Graduation Story</title>
+    <meta
+      name="description"
+      content="A romantic graduation gift website with a polished landing page, memory polaroids, and interactive photo stories."
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <!-- Replace this file with your chosen song: audio/graduation-song.mp3 -->
+    <!-- If your file name is different, update the src below to match it. -->
+    <audio id="bgMusic" src="audio/graduation-song.mp3" loop preload="auto"></audio>
+    <button id="musicToggle" class="music-toggle" type="button">♪ Play Music</button>
+
+    <div class="page-shell">
+      <div class="ambient ambient-1"></div>
+      <div class="ambient ambient-2"></div>
+      <div class="ambient ambient-3"></div>
+
+      <main class="hero-page" id="heroPage" aria-label="Our Graduation Story landing page">
+        <section class="hero-copy">
+          <div class="hero-badge">
+            <span class="hero-badge__dot"></span>
+            <span>My Humble Gift To You</span>
+          </div>
+
+          <p class="eyebrow">A little celebration of us</p>
+          <h1 class="hero-title" id="heroTitle">HAPPY GRADUATION</h1>
+          <h2 class="hero-name" id="heroName">Gesil Jean D. Hapay</h2>
+          <p class="hero-message" id="heroMessage"></p>
+
+          <div class="hero-actions">
+            <button class="start-btn" id="startBtn" type="button">START</button>
+            <button class="close-btn" id="closeBtn" type="button">CLOSE</button>
+          </div>
+
+          <div class="hero-notes">
+            <span>sparkles</span>
+            <span>hearts</span>
+            <span>diplomas</span>
+            <span>memories</span>
+          </div>
+        </section>
+
+        <section class="hero-scene" aria-label="Graduation centerpiece and photo memories">
+          <div class="scene-glow"></div>
+          <div class="scene-stage">
+            <div class="centerpiece" aria-hidden="true">
+              <div class="centerpiece__shadow"></div>
+
+              <div class="diploma">
+                <span class="diploma__end diploma__end--left"></span>
+                <span class="diploma__paper"></span>
+                <span class="diploma__end diploma__end--right"></span>
+                <span class="diploma__ribbon"></span>
+                <span class="diploma__shine"></span>
+              </div>
+
+              <div class="cap">
+                <span class="cap__board"></span>
+                <span class="cap__base"></span>
+                <span class="cap__tassel"></span>
+                <span class="cap__tassel-knot"></span>
+              </div>
+
+              <div class="centerpiece__flowers">
+                <span class="flower flower--1"></span>
+                <span class="flower flower--2"></span>
+                <span class="flower flower--3"></span>
+              </div>
+
+              <div class="centerpiece__sparkles">
+                <span>✦</span>
+                <span>✧</span>
+                <span>♥</span>
+                <span>✦</span>
+              </div>
+            </div>
+
+            <div class="polaroid-layer" id="polaroidLayer" aria-label="Memory cards">
+              <div class="orbit-ring" id="orbitRing"></div>
+            </div>
+            <div class="sparkle-layer" id="sparkleLayer" aria-hidden="true"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="intro-modal" id="introModal" role="dialog" aria-modal="true" aria-labelledby="introTitle" aria-describedby="introText">
+      <div class="intro-modal__panel">
+        <div class="intro-modal__glow"></div>
+        <p class="intro-modal__eyebrow">before we begin</p>
+        <h2 class="intro-modal__title" id="introTitle">Use full screen?</h2>
+        <p class="intro-modal__text" id="introText">
+          It’s highly recommended to use full screen for the best experience.
+        </p>
+        <div class="intro-modal__actions">
+          <button class="intro-modal__button intro-modal__button--primary" id="yesFullscreenBtn" type="button">
+            YES PLEASE
+          </button>
+          <button class="intro-modal__button intro-modal__button--secondary" id="skipFullscreenBtn" type="button">
+            NO, NEXT
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="modalOverlay" class="modal-overlay">
+      <div class="memory-modal">
+        <button id="modalClose" class="modal-close">×</button>
+
+        <div class="modal-photo-panel">
+          <img id="modalImage" src="" alt="" />
+        </div>
+
+        <div class="modal-content">
+          <h2 id="modalTitle" class="memory-title">Our Memory</h2>
+
+          <textarea id="memoryDescription" class="memory-textarea" placeholder="Write your memory here..."></textarea>
+
+          <button id="saveMemory" class="save-memory-btn">SAVE MEMORY</button>
+          <p id="saveStatus" class="save-status" aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
