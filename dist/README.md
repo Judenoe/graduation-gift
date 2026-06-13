@@ -20,3 +20,15 @@ Notes
 
 - Images and audio should be optimized for production (recommend ~800px width for photos and compressed mp3/webm audio).
 - To connect a custom domain in Netlify, add the domain in Site settings → Domain management and update DNS records as instructed by Netlify.
+
+Netlify (recommended)
+
+- Build command: `npm run build`
+- Publish directory: `dist`
+- Deploy (one-off production deploy using Netlify CLI):
+
+```bash
+npx netlify-cli deploy --prod --dir=dist
+```
+
+Or connect this repository to Netlify for continuous deploys by running `netlify init` and selecting the repository.
