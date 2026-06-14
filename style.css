@@ -1375,6 +1375,136 @@ body.modal-open {
   }
 }
 
+/* Mobile-specific improvements */
+@media (max-width: 768px) {
+  /* Ensure layout fits narrow screens */
+  .hero-page {
+    padding: 0.8rem;
+    gap: 1rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2.6rem, 9vw, 4.25rem);
+  }
+
+  .hero-name {
+    font-size: clamp(1.8rem, 7vw, 3rem);
+  }
+
+  .start-btn,
+  .close-btn,
+  .intro-modal__button {
+    padding: 1rem 1.25rem;
+    font-size: 0.98rem;
+    min-width: 8rem;
+  }
+
+  .music-toggle {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.82rem;
+    top: 0.6rem;
+    right: 0.6rem;
+  }
+
+  .scene-stage {
+    width: min(100%, 36rem);
+    height: 34rem;
+  }
+
+  .photo-card,
+  .polaroid {
+    width: clamp(5.6rem, 21vw, 7.2rem);
+  }
+
+  .photo-card__photo img,
+  .polaroid__photo img,
+  .modal-photo-panel img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Tight phone screens: ensure touch targets and readable text */
+  .hero-page {
+    grid-template-columns: 1fr;
+    padding: 0.8rem 0.6rem;
+  }
+
+  .hero-copy {
+    padding: 0.6rem 0.6rem 0;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 12vw, 3.2rem);
+    line-height: 1.02;
+  }
+
+  .hero-message {
+    font-size: 1rem;
+  }
+
+  .start-btn,
+  .close-btn,
+  .intro-modal__button,
+  .save-memory-btn,
+  .music-toggle {
+    padding: 0.9rem 1rem;
+    font-size: 0.96rem;
+  }
+
+  .memory-modal {
+    width: calc(100% - 28px);
+    max-height: 92vh;
+    grid-template-columns: 1fr;
+    border-radius: 18px;
+  }
+
+  .modal-photo-panel {
+    min-height: 180px;
+  }
+
+  .modal-content {
+    padding: 18px;
+    overflow-y: auto;
+    max-height: calc(92vh - 180px);
+  }
+
+  .modal-close {
+    width: 46px;
+    height: 46px;
+    top: 12px;
+    right: 12px;
+    font-size: 20px;
+  }
+
+  .memory-textarea {
+    min-height: 120px;
+    font-size: 1rem;
+  }
+
+  .photo-card,
+  .polaroid {
+    width: clamp(5rem, 20vw, 6.6rem);
+  }
+
+  /* prevent horizontal scrolling in any container */
+  .page-shell,
+  .hero-page,
+  .scene-stage,
+  .memory-modal {
+    max-width: 100%;
+  }
+}
+
+/* Performance note: avoid heavy shadows/filters on mobile */
+@media (max-width: 480px) {
+  body::before { filter: blur(24px); }
+  .music-toggle { box-shadow: none; }
+  .photo-card-inner, .polaroid__float { animation: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
