@@ -41,6 +41,7 @@ const memorySavedStatus = document.getElementById("saveStatus");
 const modalClose = document.getElementById("modalClose");
 const bgMusic = document.getElementById("bgMusic");
 const musicToggle = document.getElementById("musicToggle");
+const centralVideo = document.getElementById("centralVideo");
 
 const memoryStoragePrefix = "our-graduation-story-memory-";
 
@@ -424,6 +425,22 @@ function closeMemories() {
   stopOrbit();
 }
 
+function showCentralVideo() {
+  if (!centralVideo) return;
+  centralVideo.classList.add("is-visible");
+}
+
+function hideCentralVideo() {
+  if (!centralVideo) return;
+  try {
+    centralVideo.pause();
+  } catch (e) {}
+  try {
+    centralVideo.currentTime = 0;
+  } catch (e) {}
+  centralVideo.classList.remove("is-visible");
+}
+
 applyLandingText();
 renderPolaroids();
 updateMusicButton(false);
@@ -458,10 +475,14 @@ skipFullscreenBtn.addEventListener("click", () => {
 startBtn.addEventListener("click", async () => {
   musicUnlocked = true;
   launchMemories();
+  // reveal central video with the same timing as the orbit
+  showCentralVideo();
   await playMusic();
 });
 
 closeBtn.addEventListener("click", () => {
+  // hide central video and then stop the orbit
+  hideCentralVideo();
   closeMemories();
 });
 
