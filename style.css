@@ -1583,6 +1583,53 @@ html, body {
   }
 }
 
+/* Stronger mobile carousel fixes to prevent overlapping text */
+@media (max-width: 480px) {
+  /* Hide small captions that wrap outside cards */
+  .photo-card__caption,
+  .polaroid__caption {
+    display: none;
+  }
+
+  /* Reduce radius further to keep carousel compact */
+  .orbit-ring {
+    --orbit-radius: 96px !important;
+  }
+
+  /* Scale down the whole ring a bit to avoid hitting surrounding copy */
+  .orbit-ring {
+    transform-origin: 50% 50%;
+    transform: scale(0.86) translateZ(0);
+  }
+
+  /* Push the scene lower so hero copy doesn't collide */
+  .scene-stage {
+    margin-top: 2.25rem;
+    margin-bottom: 2.25rem;
+  }
+
+  /* Ensure hero copy and buttons render above carousel */
+  .hero-copy {
+    position: relative;
+    z-index: 60;
+  }
+
+  /* Make sure photo cards are above decorative elements but below hero copy if needed */
+  .photo-card,
+  .polaroid {
+    z-index: 50;
+  }
+
+  /* If any rotated or curved decorative text is present, hide it on very small screens */
+  [class*=curv],
+  [class*=arc],
+  .decorative-arc,
+  .curved-text,
+  .decorative-legend {
+    display: none !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
