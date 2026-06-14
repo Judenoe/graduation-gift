@@ -507,3 +507,45 @@ document.addEventListener("keydown", (event) => {
 
 // If you want background music later, uncomment the audio tag in index.html
 // and play it from a click handler after the intro modal closes.
+
+/* Central video <-> background music sync behavior
+   - Pause background music when central video plays
+   - Resume background music after video pause/end only if music was playing before video started
+*/
+(() => {
+  const centralVideo = document.getElementById("centralVideo");
+  const backgroundMusic = bgMusic; // already queried above
+  let shouldResumeMusicAfterVideo = false;
+
+  if (!centralVideo || !backgroundMusic) return;
+
+  centralVideo.addEventListener("play", () => {
+    // remember whether music was playing so we can resume it later
+    shouldResumeMusicAfterVideo = !backgroundMusic.paused && !backgroundMusic.ended;
+    if (shouldResumeMusicAfterVideo) {
+      try {
+        backgroundMusic.pause();
+      } catch (e) {
+        // ignore
+      }
+    }
+  });
+
+  const resumeMusicIfNeeded = () => {
+    if (shouldResumeMusicAfterVideo && backgroundMusic.paused) {
+      backgroundMusic.play().catch(() => {
+        // Browser may block playback until user interacts again.
+      });
+    }
+    shouldResumeMusicAfterVideo = false;
+  };
+
+  centralVideo.addEventListener("pause", () => {
+    // only resume if the video wasn't ended (ended event will also call resume)
+    if (!centralVideo.ended) {
+      resumeMusicIfNeeded();
+    }
+  });
+
+  centralVideo.addEventListener("ended", resumeMusicIfNeeded);
+})();
