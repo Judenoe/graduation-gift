@@ -632,12 +632,12 @@ button {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* fixed card sizing so portrait videos don't grow too tall */
-  width: 280px;
-  height: 350px;
-  max-width: 70vw;
+  /* smaller fixed card so it fits inside the orbit without overlapping */
+  width: 180px; /* capped to 200px maximum on desktop */
+  max-width: 200px;
+  height: auto;
   max-height: 65vh;
-  object-fit: cover; /* fill the card cleanly */
+  object-fit: contain; /* show full portrait without cropping */
   border-radius: 15px;
   z-index: 50;
   pointer-events: none; /* enabled only when visible */
@@ -653,18 +653,18 @@ button {
 }
 @media (max-width: 768px) {
   .central-video {
-    width: 210px;
-    height: 270px;
-    max-width: 58vw;
-    max-height: 50vh;
+    width: 150px;
+    max-width: 42vw;
+    height: auto;
+    max-height: 58vh;
     border-radius: 14px;
   }
 }
 @media (max-width: 480px) {
   .central-video {
-    width: 170px;
-    height: 230px;
-    max-width: 54vw;
+    width: 130px;
+    max-width: 40vw;
+    height: auto;
     max-height: 45vh;
     border-radius: 12px;
   }
