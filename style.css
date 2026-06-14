@@ -1505,6 +1505,84 @@ body.modal-open {
   .photo-card-inner, .polaroid__float { animation: none; }
 }
 
+/* Fixes for carousel / decorative text overlap on mobile */
+html, body {
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  /* Reduce orbit radius to avoid overlapping nearby text */
+  .orbit-ring {
+    --orbit-radius: 160px !important;
+  }
+
+  /* Ensure the hero copy stays above the scene so buttons remain readable */
+  .hero-copy {
+    position: relative;
+    z-index: 30;
+  }
+
+  /* Slightly push the scene down to create breathing room */
+  .hero-scene,
+  .scene-stage {
+    margin-top: 1.2rem;
+    margin-bottom: 1.2rem;
+    z-index: 10;
+  }
+
+  /* Ensure photo cards stay visually above purely decorative background text, but below primary copy */
+  .photo-card,
+  .polaroid {
+    z-index: 20;
+  }
+
+  /* Reduce size of rotating/curved text if present */
+  .curved-text,
+  .decorative-arc,
+  .decorative-legend {
+    font-size: 0.78rem;
+    opacity: 0.9;
+    z-index: 5;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Further reduce orbit radius and card scale on small phones */
+  .orbit-ring {
+    --orbit-radius: 120px !important;
+  }
+
+  body.experience-started .photo-card {
+    /* translateX uses --orbit-radius above */
+    transform: translate(-50%, -50%) rotate(var(--angle, 0deg)) translateX(var(--orbit-radius, 120px)) scale(0.82);
+  }
+
+  .polaroid,
+  .photo-card {
+    width: clamp(4.8rem, 18vw, 6rem);
+  }
+
+  /* Hide very decorative text elements that may collide with the carousel */
+  .decorative-arc,
+  .curved-text,
+  .decorative-legend,
+  .centerpiece__sparkles {
+    display: none !important;
+  }
+
+  /* Increase spacing above/below the carousel so surrounding copy doesn't overlap */
+  .hero-scene,
+  .scene-stage {
+    margin-top: 1.6rem;
+    margin-bottom: 1.6rem;
+  }
+
+  /* Ensure main hero copy remains readable above the scene */
+  .hero-copy {
+    z-index: 40;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
