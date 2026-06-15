@@ -1699,6 +1699,71 @@ html, body {
     z-index: 50;
   }
 
+/* Final strong mobile overrides to ensure central video and orbit scale correctly
+   Placed at the end so it wins over earlier rules */
+@media (max-width: 768px) {
+  #centralVideo.central-video,
+  #centralVideo {
+    width: 110px !important;
+    max-width: 28vw !important;
+    height: auto !important;
+    max-height: 34vh !important;
+    object-fit: contain !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 80 !important;
+    border: 4px solid #fff !important;
+    border-radius: 14px !important;
+    overflow: hidden !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+    background: #fff !important;
+    pointer-events: none !important; /* only enabled when .is-visible is present */
+  }
+
+  /* Make the visible video clickable when shown */
+  #centralVideo.central-video.is-visible {
+    pointer-events: auto !important;
+  }
+
+  .polaroid-layer,
+  .orbit-ring {
+    --orbit-radius: 115px !important;
+  }
+
+  .photo-card,
+  .polaroid {
+    width: 82px !important;
+    max-width: 82px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #centralVideo.central-video,
+  #centralVideo {
+    width: 90px !important;
+    max-width: 26vw !important;
+    height: auto !important;
+    max-height: 30vh !important;
+    object-fit: contain !important;
+    border-radius: 12px !important;
+    z-index: 90 !important;
+  }
+
+  .polaroid-layer,
+  .orbit-ring {
+    --orbit-radius: 92px !important;
+  }
+
+  .photo-card,
+  .polaroid {
+    width: 68px !important;
+    max-width: 68px !important;
+  }
+}
+
+
   /* If any rotated or curved decorative text is present, hide it on very small screens */
   [class*=curv],
   [class*=arc],
