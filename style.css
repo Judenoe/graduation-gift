@@ -652,21 +652,49 @@ button {
 .media-central-video-resp {
 }
 @media (max-width: 768px) {
+  /* Mobile: make the central video compact and centered */
   .central-video {
-    width: 150px;
-    max-width: 42vw;
+    width: 120px;
+    max-width: 30vw;
     height: auto;
-    max-height: 58vh;
+    max-height: 38vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: contain;
+    z-index: 60;
     border-radius: 14px;
+  }
+
+  /* Shrink orbit and photo sizes so the video fits cleanly in the center */
+  .polaroid-layer,
+  .orbit-ring {
+    --orbit-radius: 130px;
+  }
+
+  .photo-card,
+  .polaroid {
+    width: 92px;
   }
 }
 @media (max-width: 480px) {
   .central-video {
-    width: 130px;
-    max-width: 40vw;
+    width: 105px;
+    max-width: 32vw;
     height: auto;
-    max-height: 45vh;
+    max-height: 34vh;
     border-radius: 12px;
+  }
+
+  .polaroid-layer,
+  .orbit-ring {
+    --orbit-radius: 105px;
+  }
+
+  .photo-card,
+  .polaroid {
+    width: 78px;
   }
 }
 
