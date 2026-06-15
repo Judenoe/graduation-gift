@@ -85,6 +85,63 @@
   }
 }
 
+/* Extra-tight overrides for small-mid phones that still show overlap (420px & 360px targets) */
+@media (max-width: 420px) {
+  #centralVideo,
+  video#centralVideo,
+  .central-video {
+    width: 80px !important;
+    height: 120px !important;
+    max-width: 80px !important;
+    max-height: 120px !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+    z-index: 999 !important;
+    border-radius: 10px !important;
+    pointer-events: none !important;
+  }
+
+  #centralVideo.central-video.is-visible,
+  video#centralVideo.is-visible {
+    pointer-events: auto !important;
+  }
+
+  .polaroid-layer,
+  .orbit-ring {
+    --orbit-radius: 80px !important;
+  }
+
+  .photo-card,
+  .polaroid {
+    width: 56px !important;
+    max-width: 56px !important;
+  }
+}
+
+@media (max-width: 360px) {
+  #centralVideo,
+  video#centralVideo,
+  .central-video {
+    width: 72px !important;
+    height: 110px !important;
+    max-width: 72px !important;
+    max-height: 110px !important;
+    border-radius: 10px !important;
+  }
+
+  .polaroid-layer,
+  .orbit-ring {
+    --orbit-radius: 72px !important;
+  }
+
+  .photo-card,
+  .polaroid {
+    width: 50px !important;
+    max-width: 50px !important;
+  }
+}
+
+
 * {
   box-sizing: border-box;
 }
