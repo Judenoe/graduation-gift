@@ -20,6 +20,71 @@
   --radius-sm: 14px;
 }
 
+/* FINAL: Enforced mobile overrides to ensure the central video and orbit fit inside the carousel on phones */
+@media (max-width: 768px) {
+  #centralVideo,
+  video#centralVideo,
+  .central-video {
+    width: 95px !important;
+    height: 145px !important;
+    max-width: 95px !important;
+    max-height: 145px !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 999 !important;
+    border: 3px solid #fff !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16) !important;
+    background: #fff !important;
+    pointer-events: none !important; /* only enabled when visible */
+  }
+
+  /* make visible video interactable */
+  #centralVideo.central-video.is-visible,
+  video#centralVideo.is-visible {
+    pointer-events: auto !important;
+  }
+
+  .polaroid-layer {
+    --orbit-radius: 105px !important;
+  }
+
+  .photo-card,
+  .polaroid {
+    width: 70px !important;
+    max-width: 70px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #centralVideo,
+  video#centralVideo,
+  .central-video {
+    width: 82px !important;
+    height: 125px !important;
+    max-width: 82px !important;
+    max-height: 125px !important;
+    border-radius: 10px !important;
+  }
+
+  .polaroid-layer {
+    --orbit-radius: 88px !important;
+  }
+
+  .photo-card,
+  .polaroid {
+    width: 58px !important;
+    max-width: 58px !important;
+  }
+}
+
 * {
   box-sizing: border-box;
 }
